@@ -1,0 +1,29 @@
+<% layout('../layouts/boilerplate.ejs') %>
+<style>
+  .button {
+    width:100%;
+    display:block;
+}
+</style>
+<div class="col-6 offset-3">
+  <div class="card">
+    <h3><div class="card-header">
+      <%= currentUser.name %>
+    </div></h3>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Your username - <%=  currentUser.username %></li>
+      <li class="list-group-item">email - <%=  currentUser.email %></li>
+      <li class="list-group-item">Address - <%=  currentUser.address %></li>
+      <li class="list-group-item">Age - <%=  currentUser.age %></li>
+    </ul>
+    <div class="card-body">
+      <a href="/users/<%=currentUser._id %>/edit" class = "card-link">
+          <button class="button btn btn-warning">
+            Edit Your profile!
+          </button>
+      </a>
+    </div>
+    <a href="/users/<%= currentUser._id %>/jobs" class="btn btn-primary">Show my jobs!</a>
+  </div>
+</div>
+  

@@ -1,0 +1,25 @@
+<%- layout('../layouts/boilerplate.ejs') %>
+<style>
+    .image-resize{
+        height: 200px;
+        width: 300px;
+        object-fit: cover;
+    }
+</style>
+<h1>List of all your jobs!</h1>
+<% if(allJobs!==undefined) {%>
+<% for(let job of allJobs) { %>
+    <div class="media shadow p-4 mb-4 bg-white img-thumbnail">
+        <img class="mr-3 rounded image-resize" src="<%= job.image %>" alt="Generic placeholder image">
+        <div class="media-body">
+          <h5 class="mt-0"><%= job.title %></h5>
+          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+        <form action="/jobs/<%= job._id %>" method = 'GET'>
+            <button class = "btn btn-primary">
+                Show more
+            </button>
+        </form>
+      </div>
+<% } %>
+<%} %>

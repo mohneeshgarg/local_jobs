@@ -1,0 +1,49 @@
+<% layout('../layouts/boilerplate.ejs') %>
+<style>
+    .image-resize{
+        height: 400px;
+        object-fit: cover;
+    }
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.inline {
+  display: inline-block;
+  padding-left: 10px;
+}
+</style>
+</div>
+<div class="col-6 offset-3 p-2">
+    <div class="card">
+        <img class="card-img-top" src= "<%= job.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= job.title %> </h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><img src="https://img.icons8.com/color/48/000000/money-bag.png"/><h6 class = "inline">Salary <%= job.salary %> </h6></li>
+          <li class="list-group-item"><img src="https://img.icons8.com/color/48/000000/outgoing-call.png"/><h6 class = "inline">Contact <%= job.contact %></h6> </li>
+          <li class="list-group-item"><img src="https://img.icons8.com/color/48/000000/place-marker--v2.png"/><h6 class = "inline">Location <%= job.address %></h6></li>
+        </ul>
+        <% if(currentUser!==undefined && job.owner===currentUser.username) { %>
+        <div class="card-body">
+            <a href="/jobs/<%=job._id %>/edit" class = "card-link">
+                <button class="btn btn-warning">
+                    Edit
+                </button>
+            </a>
+            <form action="/jobs/<%= job._id %>?_method=DELETE" class = "d-inline" method = 'POST'>
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+        <% } %>
+    </div>    
+</div>
+<footer class = "footer bg-dark" style="position: relative;">
+  <div class = "container p-2">
+      <span class = "text-muted">&copy; jobHelper</span>
+  </div>
+</footer>
